@@ -1,0 +1,19 @@
+{
+  "name": "node-zagat",
+  "version": "0.0.0",
+  "description": "Node module to search for and retrieve associated information from restaurants posted on Zagat.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akashkrishnan/node-zagat.git"
+  },
+  "author": "Akash Krishnan <ak@aakay.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akashkrishnan/node-zagat/issues"
+  },
+  "homepage": "https://github.com/akashkrishnan/node-zagat",
+  "dependencies": {
+    "request": "^2.37.0"
+  }
+}
