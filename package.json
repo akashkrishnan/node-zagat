@@ -1,6 +1,6 @@
 {
   "name": "node-zagat",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node module to search for and retrieve associated information from restaurants posted on Zagat.",
   "main": "index.js",
   "repository": {
