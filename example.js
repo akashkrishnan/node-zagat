@@ -12,7 +12,7 @@ zagat.getLocations(function (err, locations) {
       if (err) throw err;
       else {
 
-        // Search 'garden'
+        // Search 'palace'
         zagat.searchPlaces('palace', function (err, restaurants) {
           if (err) throw err;
           else {
