@@ -5,7 +5,7 @@ zagat.getLocations(function (err, locations) {
   if (err) throw err;
   else {
 
-    console.dir(locations);
+    console.log('LOCATIONS:\n', locations);
 
     // Set current location to Boston
     zagat.setLocation(locations.Boston, function (err) {
@@ -13,11 +13,11 @@ zagat.getLocations(function (err, locations) {
       else {
 
         // Search 'garden'
-        zagat.searchPlaces('', function (err, restaurants) {
+        zagat.searchPlaces('palace', function (err, restaurants) {
           if (err) throw err;
           else {
 
-            console.dir(restaurants);
+            console.log('\nRESTAURANTS:\n', restaurants);
 
           }
         });

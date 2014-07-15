@@ -7,7 +7,7 @@ var locationRegex = /<li><a href="\/set-city\/(.*)">(.*)<\/a><\/li>/g;
 var setLocationUrl = 'http://www.zagat.com/set-city';
 
 var searchUrl = 'http://www.zagat.com/search/place';
-var searchRegex = /title\s*:\s*'(.*)'/g;
+var searchRegex = /\s*([a-zA-Z]*)\s+:\s(.*)/g;
 
 
 module.exports = {
@@ -65,12 +65,27 @@ function searchPlaces(string, done) {
     if (error) done(error);
     else if (response.statusCode != 200) done('Unexpected status code: ' + response.statusCode + '.');
     else {
+
       var restaurants = [];
-      var match;
-      while (match = searchRegex.exec(body)) {
-        restaurants.push({ title: match[1] });
+
+      // Search for all key-value pairs
+      for (var i = 0, match; match = searchRegex.exec(body);) {
+        if (match[1]) {
+
+          // Figure out if we need to add a new restaurant based on existing keys
+          if (restaurants[i] && restaurants[i][match[1]]) i++;
+          if (!restaurants[i]) restaurants[i] = {};
+
+          // Remove trailing comma; replace single with double quotes
+          var v = match[2].replace(/,(\s*)$/, '$1').replace(/'/g, '"');
+
+          restaurants[i][match[1]] = JSON.parse(v);
+
+        }
       }
+
       done(null, restaurants);
+
     }
   });
 }
