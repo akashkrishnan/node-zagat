@@ -19,6 +19,17 @@ zagat.getLocations(function (err, locations) {
 
             console.log('\nRESTAURANTS:\n', restaurants);
 
+            // Get information on first restaurant in list
+            var restaurant = restaurants[0];
+            zagat.getPlace(restaurant.url, function (err, info) {
+              if (err) throw err;
+              else {
+
+                console.log('\nRESTAURANT INFO:\n', info);
+
+              }
+            });
+
           }
         });
 

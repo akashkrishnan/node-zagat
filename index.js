@@ -13,7 +13,8 @@ var searchRegex = /\s*([a-zA-Z]*)\s+:\s(.*)/g;
 module.exports = {
   getLocations: getLocations,
   setLocation: setLocation,
-  searchPlaces: searchPlaces
+  searchPlaces: searchPlaces,
+  getPlace: getPlace
 };
 
 /**
@@ -85,6 +86,30 @@ function searchPlaces(string, done) {
       }
 
       done(null, restaurants);
+
+    }
+  });
+}
+
+/**
+ * Gets information about a place from 'restaurantUrl' on Zagat
+ *
+ * @param restaurantUrl {String} Required.
+ * @param done {Function(err, info)} Required.
+ *  @param err {String} error message
+ *  @param info {{ key: value }} restaurant information
+ */
+function getPlace(restaurantUrl, done) {
+  request(restaurantUrl, function (error, response, body) {
+    if (error) done(error);
+    else if (response.statusCode != 200) done('Unexpected status code: ' + response.statusCode + '.');
+    else {
+
+      return done('node-zagat.getPlace not implemented.');
+
+      var info = {};
+      // TODO: impl
+      done(null, info);
 
     }
   });
