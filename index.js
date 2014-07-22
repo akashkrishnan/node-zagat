@@ -27,7 +27,7 @@ module.exports = {
 function getLocations(done) {
   request(locationsUrl, function (error, response, body) {
     if (error) done(error);
-    else if (response.statusCode != 200) done('Unexpected status code: ' + response.statusCode + '.');
+    else if (response.statusCode != 200) done(new Error('Unexpected status code: ' + response.statusCode + '.'));
     else {
       var locations = {};
       var match;
@@ -47,7 +47,7 @@ function getLocations(done) {
 function setLocation(location, done) {
   request(setLocationUrl + '/' + location, function (error, response, body) {
     if (error) done(error);
-    else if (response.statusCode != 200) done('Unexpected status code: ' + response.statusCode + '.');
+    else if (response.statusCode != 200) done(new Error('Unexpected status code: ' + response.statusCode + '.'));
     else done();
   });
 }
@@ -64,7 +64,7 @@ function searchPlaces(string, done) {
   var query = querystring.stringify({ text: string });
   request(searchUrl + '/?' + query, function (error, response, body) {
     if (error) done(error);
-    else if (response.statusCode != 200) done('Unexpected status code: ' + response.statusCode + '.');
+    else if (response.statusCode != 200) done(new Error('Unexpected status code: ' + response.statusCode + '.'));
     else {
 
       var restaurants = [];
@@ -102,7 +102,7 @@ function searchPlaces(string, done) {
 function getPlace(restaurantUrl, done) {
   request(restaurantUrl, function (error, response, body) {
     if (error) done(error);
-    else if (response.statusCode != 200) done('Unexpected status code: ' + response.statusCode + '.');
+    else if (response.statusCode != 200) done(new Error('Unexpected status code: ' + response.statusCode + '.'));
     else {
 
       return done('node-zagat.getPlace not implemented.');
